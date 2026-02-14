@@ -506,6 +506,12 @@ h1, h2, h3 {
   text-decoration: line-through;
 }
 
+.avail-slot.past {
+  background: transparent;
+  opacity: 0.2;
+  cursor: default;
+}
+
 .avail-slot.selected {
   background: var(--c-black);
   color: var(--c-gray-light);
