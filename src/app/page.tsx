@@ -1,6 +1,7 @@
 import DashboardShell from "@/components/DashboardShell";
 import ServiceCard from "@/components/ServiceCard";
 import DataBlock from "@/components/DataBlock";
+import QuoteBuilder from "@/components/QuoteBuilder";
 
 function HvacIcon() {
   return <div className="icon-diagram" />;
@@ -58,14 +59,7 @@ function GasIcon() {
 export default function Home() {
   return (
     <DashboardShell>
-      <ServiceCard
-        className="service-hvac"
-        svcNumber="01"
-        icon={<HvacIcon />}
-        title={<>HVAC</>}
-        subtitle="Heating, Ventilation & AC"
-        showFab
-      />
+      <QuoteBuilder />
 
       <ServiceCard
         className="service-plumbing"
@@ -78,12 +72,19 @@ export default function Home() {
       <DataBlock />
 
       <ServiceCard
+        className="service-hvac"
+        svcNumber="01"
+        icon={<HvacIcon />}
+        title={<>HVAC</>}
+        subtitle="Heating, Ventilation & AC"
+      />
+
+      <ServiceCard
         className="service-refrig"
         svcNumber="03"
         icon={<GasIcon />}
         title={<>Gas<br />Fitting</>}
         subtitle="Installation & Service"
-        showFab
       />
     </DashboardShell>
   );

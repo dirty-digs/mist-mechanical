@@ -289,7 +289,7 @@ h1, h2, h3 {
 }
 
 /* Service cards grid positions */
-.service-hvac {
+.quote-builder {
   grid-column: 2 / 3;
   grid-row: 2 / 4;
   background-color: var(--c-green);
@@ -301,9 +301,15 @@ h1, h2, h3 {
   background-color: var(--c-gray-mid);
 }
 
+.service-hvac {
+  grid-column: 4 / 5;
+  grid-row: 2 / 3;
+  background-color: var(--c-green);
+}
+
 .service-refrig {
   grid-column: 4 / 5;
-  grid-row: 2 / 4;
+  grid-row: 3 / 4;
   background-color: var(--c-orange);
 }
 
@@ -325,6 +331,95 @@ h1, h2, h3 {
   flex-direction: column;
   gap: 8px;
   flex: 1;
+}
+
+/* Quote builder */
+.quote-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  padding-top: 40px;
+}
+
+.quote-heading {
+  font-size: 28px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 20px 0;
+  letter-spacing: 1px;
+}
+
+.quote-slide {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  animation: fadeIn 0.25s ease;
+}
+
+.quote-label {
+  font-family: var(--font-tech);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(0,0,0,0.5);
+  margin: 0 0 12px 0;
+  text-align: center;
+}
+
+.quote-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.quote-option {
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-tech);
+  font-size: 12px;
+  color: var(--c-black);
+  text-align: left;
+}
+
+.quote-option:hover {
+  background: rgba(0,0,0,0.08);
+  border-color: rgba(0,0,0,0.2);
+}
+
+.quote-option.selected {
+  background: var(--c-black);
+  color: var(--c-gray-light);
+  border-color: var(--c-black);
+}
+
+.quote-result {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.quote-price {
+  font-size: 32px;
+  font-weight: 400;
+  margin: 8px 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.quote-disclaimer {
+  font-family: var(--font-tech);
+  font-size: 10px;
+  line-height: 1.6;
+  color: rgba(0,0,0,0.4);
+  max-width: 240px;
+  margin-bottom: 20px;
 }
 
 /* Standalone intake form (for use outside dashboard grid) */
