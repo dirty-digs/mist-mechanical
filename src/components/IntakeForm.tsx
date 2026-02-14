@@ -14,6 +14,8 @@ export default function IntakeForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const toggle = (id: string) => {
     const next = new Set(selected);
@@ -21,6 +23,41 @@ export default function IntakeForm() {
     else next.add(id);
     setSelected(next);
   };
+
+  const handleSubmit = async () => {
+    setSending(true);
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "service-request",
+          services: Array.from(selected),
+          name,
+          phone,
+          message,
+        }),
+      });
+      setSent(true);
+    } catch {
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  if (sent) {
+    return (
+      <div className="intake-standalone">
+        <div className="intake-form" style={{ justifyContent: "center", alignItems: "center", textAlign: "center" }}>
+          <p className="intake-heading">Request Sent</p>
+          <p style={{ fontFamily: "var(--font-tech)", fontSize: 11, color: "#666" }}>
+            We&apos;ll be in touch shortly.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="intake-standalone">
@@ -123,8 +160,13 @@ export default function IntakeForm() {
               >
                 &larr; Back
               </button>
-              <button type="button" className="intake-submit">
-                Submit Request &rarr;
+              <button
+                type="button"
+                className="intake-submit"
+                onClick={handleSubmit}
+                disabled={sending}
+              >
+                {sending ? "Sending..." : "Submit Request \u2192"}
               </button>
             </div>
           </div>

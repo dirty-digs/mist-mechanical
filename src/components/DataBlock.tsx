@@ -14,6 +14,8 @@ export default function DataBlock() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const toggle = (id: string) => {
     const next = new Set(selected);
@@ -21,6 +23,45 @@ export default function DataBlock() {
     else next.add(id);
     setSelected(next);
   };
+
+  const handleSubmit = async () => {
+    setSending(true);
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "service-request",
+          services: Array.from(selected),
+          name,
+          phone,
+          message,
+        }),
+      });
+      setSent(true);
+    } catch {
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  if (sent) {
+    return (
+      <article className="card data-block">
+        <div className="card-header">
+          <span>NEW</span>
+          <span>REQUEST</span>
+        </div>
+        <div className="intake-form" style={{ justifyContent: "center", alignItems: "center", textAlign: "center" }}>
+          <p className="intake-heading">Request Sent</p>
+          <p style={{ fontFamily: "var(--font-tech)", fontSize: 11, color: "#666" }}>
+            We&apos;ll be in touch shortly.
+          </p>
+        </div>
+      </article>
+    );
+  }
 
   return (
     <article className="card data-block">
@@ -120,8 +161,13 @@ export default function DataBlock() {
               <button type="button" className="intake-back" onClick={() => setStep(1)}>
                 &larr; Back
               </button>
-              <button type="button" className="intake-submit">
-                Submit Request &rarr;
+              <button
+                type="button"
+                className="intake-submit"
+                onClick={handleSubmit}
+                disabled={sending}
+              >
+                {sending ? "Sending..." : "Submit Request \u2192"}
               </button>
             </div>
           </div>

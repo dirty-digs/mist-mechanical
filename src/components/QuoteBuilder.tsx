@@ -37,7 +37,7 @@ const jobTypes: Record<string, { id: string; label: string; base: number }[]> = 
 
 const homeSize = [
   { id: "small", label: "< 1,000 sqft", multiplier: 0.85 },
-  { id: "medium", label: "1,000–2,500 sqft", multiplier: 1.0 },
+  { id: "medium", label: "1,000\u20132,500 sqft", multiplier: 1.0 },
   { id: "large", label: "2,500+ sqft", multiplier: 1.25 },
 ];
 
@@ -60,6 +60,10 @@ export default function QuoteBuilder() {
   const [jobs, setJobs] = useState<Set<string>>(new Set());
   const [size, setSize] = useState("");
   const [tier, setTier] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const availableJobs = serviceOptions
     .filter((s) => services.has(s.id))
@@ -86,6 +90,35 @@ export default function QuoteBuilder() {
     setJobs(new Set());
     setSize("");
     setTier("");
+    setName("");
+    setPhone("");
+    setSent(false);
+  };
+
+  const handleSubmit = async () => {
+    setSending(true);
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "quote",
+          services: Array.from(services),
+          jobs: Array.from(jobs),
+          home_size: selectedSize?.label,
+          tier: selectedTier?.label,
+          estimate_low: rangeLow,
+          estimate_high: rangeHigh,
+          name,
+          phone,
+        }),
+      });
+      setSent(true);
+    } catch {
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -97,7 +130,7 @@ export default function QuoteBuilder() {
 
       <div className="quote-inner">
         <div className="intake-steps" style={{ marginBottom: 12 }}>
-          {[0, 1, 2, 3, 4].map((i) => (
+          {[0, 1, 2, 3, 4, 5].map((i) => (
             <div
               key={i}
               className={`intake-step-dot${step >= i ? " active" : ""}`}
@@ -237,10 +270,62 @@ export default function QuoteBuilder() {
               <button type="button" className="intake-back" onClick={reset}>
                 &larr; Start over
               </button>
-              <button type="button" className="intake-submit">
+              <button
+                type="button"
+                className="intake-next"
+                onClick={() => setStep(5)}
+              >
                 Book Now &rarr;
               </button>
             </div>
+          </div>
+        )}
+
+        {/* Step 5: Contact info + submit */}
+        {step === 5 && !sent && (
+          <div className="quote-slide">
+            <p className="quote-label">Your contact info</p>
+            <input
+              type="text"
+              className="intake-input"
+              placeholder="Full name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              autoFocus
+            />
+            <input
+              type="tel"
+              className="intake-input"
+              placeholder="Phone number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            <div className="intake-nav">
+              <button type="button" className="intake-back" onClick={() => setStep(4)}>
+                &larr; Back
+              </button>
+              <button
+                type="button"
+                className="intake-submit"
+                onClick={handleSubmit}
+                disabled={!name || !phone || sending}
+              >
+                {sending ? "Sending..." : "Submit Quote \u2192"}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Step 5: Confirmation */}
+        {step === 5 && sent && (
+          <div className="quote-slide quote-result">
+            <p className="intake-heading">Quote Sent</p>
+            <p style={{ fontFamily: "var(--font-tech)", fontSize: 11, color: "rgba(0,0,0,0.5)" }}>
+              We&apos;ll reach out to confirm details and schedule your service.
+            </p>
+            <button type="button" className="intake-back" onClick={reset} style={{ marginTop: 16 }}>
+              &larr; New quote
+            </button>
           </div>
         )}
       </div>
