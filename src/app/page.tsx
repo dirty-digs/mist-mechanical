@@ -116,6 +116,7 @@ export default function Home() {
         icon={<PlumbingIcon />}
         title={<>Plumbing</>}
         subtitle="Residential Specialists"
+        ridge="center"
       />
 
       <DataBlock />
@@ -126,6 +127,7 @@ export default function Home() {
         icon={<HvacIcon />}
         title={<>HVAC</>}
         subtitle="Heating, Ventilation & AC"
+        ridge="left"
       />
 
       <ServiceCard
@@ -134,6 +136,7 @@ export default function Home() {
         icon={<GasIcon />}
         title={<>Gas<br />Fitting</>}
         subtitle="Installation & Service"
+        ridge="right"
       />
     </DashboardShell>
   );
