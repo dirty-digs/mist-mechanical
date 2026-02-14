@@ -57,9 +57,56 @@ function GasIcon() {
   );
 }
 
+function HvacIconSmall() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="10" stroke="#1C2836" strokeWidth="1" />
+      <circle cx="12" cy="12" r="5" stroke="#1C2836" strokeWidth="0.8" />
+      <line x1="4" y1="4" x2="20" y2="20" stroke="#1C2836" strokeWidth="0.8" />
+    </svg>
+  );
+}
+
+function PlumbingIconSmall() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 3 C12 3 4 13 4 16.5 C4 20.5 8 22 12 22 C16 22 20 20.5 20 16.5 C20 13 12 3 12 3Z" stroke="#1C2836" strokeWidth="1" fill="none" />
+    </svg>
+  );
+}
+
+function GasIconSmall() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <circle cx="10" cy="12" r="7" stroke="#1C2836" strokeWidth="0.8" fill="none" />
+      <circle cx="15" cy="12" r="7" fill="#6A8CAE" opacity="0.4" />
+    </svg>
+  );
+}
+
 export default function Home() {
   return (
     <DashboardShell>
+      {/* Mobile hero — hidden on desktop */}
+      <div className="mobile-hero">
+        <div className="mobile-services-row">
+          <div className="mobile-svc-badge" style={{ backgroundColor: "var(--c-green)" }}>
+            <HvacIconSmall />
+            <span>HVAC</span>
+          </div>
+          <div className="mobile-svc-badge" style={{ backgroundColor: "var(--c-gray-mid)" }}>
+            <PlumbingIconSmall />
+            <span>Plumbing</span>
+          </div>
+          <div className="mobile-svc-badge" style={{ backgroundColor: "var(--c-orange)" }}>
+            <GasIconSmall />
+            <span>Gas Fitting</span>
+          </div>
+        </div>
+        <p className="mobile-slogan">Your home. Our expertise.</p>
+        <p className="mobile-sub-slogan">Residential specialists serving Greater Vancouver</p>
+      </div>
+
       <QuoteBuilder />
       <AvailabilityCalendar />
 
