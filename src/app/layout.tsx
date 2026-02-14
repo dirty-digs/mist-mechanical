@@ -15,8 +15,16 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mist Mechanical | Industrial Systems",
-  description: "Industrial mechanical systems dashboard - Climate Control, Fluid Dynamics, and Cryo Storage",
+  title: "Mist Mechanical | HVAC, Plumbing & Gas Fitting",
+  description: "Residential HVAC, plumbing, and gas fitting specialists serving Greater Vancouver. Locally owned by Red Seal certified tradesmen.",
+  keywords: ["HVAC", "plumbing", "gas fitting", "Vancouver", "residential", "furnace", "heat pump", "water heater"],
+  openGraph: {
+    title: "Mist Mechanical | HVAC, Plumbing & Gas Fitting",
+    description: "Residential HVAC, plumbing, and gas fitting specialists serving Greater Vancouver.",
+    url: "https://mistmechanical.ca",
+    siteName: "Mist Mechanical",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
