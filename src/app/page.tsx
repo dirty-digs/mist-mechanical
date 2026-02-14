@@ -1,6 +1,4 @@
-import NoiseOverlay from "@/components/NoiseOverlay";
-import Sidebar from "@/components/Sidebar";
-import TopBar from "@/components/TopBar";
+import DashboardShell from "@/components/DashboardShell";
 import ServiceCard from "@/components/ServiceCard";
 import DataBlock from "@/components/DataBlock";
 
@@ -28,7 +26,7 @@ function PlumbingIcon() {
   );
 }
 
-function RefrigIcon() {
+function GasIcon() {
   return (
     <div style={{ position: "relative", width: 100, height: 100, marginBottom: 20 }}>
       <div
@@ -59,40 +57,34 @@ function RefrigIcon() {
 
 export default function Home() {
   return (
-    <>
-      <NoiseOverlay />
-      <div className="dashboard">
-        <Sidebar />
-        <TopBar />
+    <DashboardShell>
+      <ServiceCard
+        className="service-hvac"
+        svcNumber="01"
+        icon={<HvacIcon />}
+        title={<>HVAC</>}
+        subtitle="Heating, Ventilation & AC"
+        showFab
+      />
 
-        <ServiceCard
-          className="service-hvac"
-          svcNumber="01"
-          icon={<HvacIcon />}
-          title={<>HVAC</>}
-          subtitle="Heating, Ventilation & AC"
-          showFab
-        />
+      <ServiceCard
+        className="service-plumbing"
+        svcNumber="02"
+        icon={<PlumbingIcon />}
+        title={<>Plumbing</>}
+        subtitle="Residential Specialists"
+      />
 
-        <ServiceCard
-          className="service-plumbing"
-          svcNumber="02"
-          icon={<PlumbingIcon />}
-          title={<>Plumbing</>}
-          subtitle="Residential & Commercial"
-        />
+      <DataBlock />
 
-        <DataBlock />
-
-        <ServiceCard
-          className="service-refrig"
-          svcNumber="03"
-          icon={<RefrigIcon />}
-          title={<>Gas<br />Fitting</>}
-          subtitle="Installation & Service"
-          showFab
-        />
-      </div>
-    </>
+      <ServiceCard
+        className="service-refrig"
+        svcNumber="03"
+        icon={<GasIcon />}
+        title={<>Gas<br />Fitting</>}
+        subtitle="Installation & Service"
+        showFab
+      />
+    </DashboardShell>
   );
 }

@@ -12,19 +12,19 @@ export default function Logo() {
         xmlns="http://www.w3.org/2000/svg"
         className="logo-svg"
       >
-        {/* Rotating beam group - sits behind the mountain */}
+        {/* Rotating beam group - two beams 180 degrees apart */}
         <g className="beam-rotate" style={{ transformOrigin: "100px 52px" }}>
-          {/* Pastel red beam (left) */}
+          {/* Pastel red beam */}
           <polygon
-            points="100,52 40,0 70,0"
+            points="100,52 85,0 115,0"
             fill="#E8A0A0"
-            opacity="0.6"
+            opacity="0.55"
           />
-          {/* Pastel blue beam (right) */}
+          {/* Pastel blue beam (180 degrees opposite) */}
           <polygon
-            points="100,52 130,0 160,0"
+            points="100,52 85,104 115,104"
             fill="#A8C8E0"
-            opacity="0.6"
+            opacity="0.55"
           />
         </g>
 
