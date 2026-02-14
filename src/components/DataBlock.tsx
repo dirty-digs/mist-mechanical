@@ -10,10 +10,17 @@ const services = [
 
 export default function DataBlock() {
   const [step, setStep] = useState(0);
-  const [service, setService] = useState("");
+  const [selected, setSelected] = useState<Set<string>>(new Set());
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+
+  const toggle = (id: string) => {
+    const next = new Set(selected);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
+    setSelected(next);
+  };
 
   return (
     <article className="card data-block">
@@ -23,7 +30,6 @@ export default function DataBlock() {
       </div>
 
       <div className="intake-form">
-        {/* Step indicators */}
         <div className="intake-steps">
           {[0, 1, 2].map((i) => (
             <div
@@ -33,7 +39,6 @@ export default function DataBlock() {
           ))}
         </div>
 
-        {/* Step 0: Choose service */}
         {step === 0 && (
           <div className="intake-slide">
             <p className="intake-heading">How can we help?</p>
@@ -42,11 +47,8 @@ export default function DataBlock() {
                 <button
                   key={svc.id}
                   type="button"
-                  className={`service-option${service === svc.id ? " selected" : ""}`}
-                  onClick={() => {
-                    setService(svc.id);
-                    setStep(1);
-                  }}
+                  className={`service-option${selected.has(svc.id) ? " selected" : ""}`}
+                  onClick={() => toggle(svc.id)}
                 >
                   <span
                     className="service-option-icon"
@@ -56,10 +58,20 @@ export default function DataBlock() {
                 </button>
               ))}
             </div>
+            <div className="intake-nav">
+              <span />
+              <button
+                type="button"
+                className="intake-next"
+                onClick={() => setStep(1)}
+                disabled={selected.size === 0}
+              >
+                Next &rarr;
+              </button>
+            </div>
           </div>
         )}
 
-        {/* Step 1: Contact info */}
         {step === 1 && (
           <div className="intake-slide">
             <p className="intake-heading">Your details</p>
@@ -79,11 +91,7 @@ export default function DataBlock() {
               onChange={(e) => setPhone(e.target.value)}
             />
             <div className="intake-nav">
-              <button
-                type="button"
-                className="intake-back"
-                onClick={() => setStep(0)}
-              >
+              <button type="button" className="intake-back" onClick={() => setStep(0)}>
                 &larr; Back
               </button>
               <button
@@ -98,7 +106,6 @@ export default function DataBlock() {
           </div>
         )}
 
-        {/* Step 2: Describe issue */}
         {step === 2 && (
           <div className="intake-slide">
             <p className="intake-heading">Describe the issue</p>
@@ -110,17 +117,10 @@ export default function DataBlock() {
               autoFocus
             />
             <div className="intake-nav">
-              <button
-                type="button"
-                className="intake-back"
-                onClick={() => setStep(1)}
-              >
+              <button type="button" className="intake-back" onClick={() => setStep(1)}>
                 &larr; Back
               </button>
-              <button
-                type="button"
-                className="intake-submit"
-              >
+              <button type="button" className="intake-submit">
                 Submit Request &rarr;
               </button>
             </div>

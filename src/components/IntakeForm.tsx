@@ -10,10 +10,17 @@ const services = [
 
 export default function IntakeForm() {
   const [step, setStep] = useState(0);
-  const [service, setService] = useState("");
+  const [selected, setSelected] = useState<Set<string>>(new Set());
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+
+  const toggle = (id: string) => {
+    const next = new Set(selected);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
+    setSelected(next);
+  };
 
   return (
     <div className="intake-standalone">
@@ -35,11 +42,8 @@ export default function IntakeForm() {
                 <button
                   key={svc.id}
                   type="button"
-                  className={`service-option${service === svc.id ? " selected" : ""}`}
-                  onClick={() => {
-                    setService(svc.id);
-                    setStep(1);
-                  }}
+                  className={`service-option${selected.has(svc.id) ? " selected" : ""}`}
+                  onClick={() => toggle(svc.id)}
                 >
                   <span
                     className="service-option-icon"
@@ -48,6 +52,17 @@ export default function IntakeForm() {
                   <span className="service-option-label">{svc.label}</span>
                 </button>
               ))}
+            </div>
+            <div className="intake-nav">
+              <span />
+              <button
+                type="button"
+                className="intake-next"
+                onClick={() => setStep(1)}
+                disabled={selected.size === 0}
+              >
+                Next &rarr;
+              </button>
             </div>
           </div>
         )}

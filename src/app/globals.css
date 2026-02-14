@@ -401,6 +401,22 @@ h1, h2, h3 {
   border-color: var(--c-black);
 }
 
+.quote-tier {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.quote-tier-desc {
+  font-size: 10px;
+  opacity: 0.55;
+  font-weight: 400;
+}
+
+.quote-tier.selected .quote-tier-desc {
+  opacity: 0.7;
+}
+
 .quote-result {
   align-items: center;
   justify-content: center;
