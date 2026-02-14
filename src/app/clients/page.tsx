@@ -1,5 +1,6 @@
 import DashboardShell from "@/components/DashboardShell";
 import IntakeForm from "@/components/IntakeForm";
+import ServiceAreaMap from "@/components/ServiceAreaMap";
 
 export default function ClientsPage() {
   return (
@@ -8,18 +9,13 @@ export default function ClientsPage() {
         <h1 className="page-title">Clients</h1>
         <p className="page-subtitle">Request service or get in touch</p>
 
-        <div className="page-grid" style={{ gridTemplateColumns: "1fr 1fr" }}>
-          <div>
-            <div className="page-section">
-              <h2 className="page-section-title">Service Area</h2>
-              <p className="page-text">
-                We serve residential homes throughout the Greater Vancouver area
-                including Vancouver, Burnaby, New Westminster, North Vancouver,
-                West Vancouver, Coquitlam, Port Coquitlam, Port Moody, Surrey,
-                Richmond, and Delta.
-              </p>
-            </div>
+        <ServiceAreaMap />
 
+        <div
+          className="page-grid"
+          style={{ gridTemplateColumns: "1fr 1fr", marginTop: 32 }}
+        >
+          <div>
             <div className="page-section">
               <h2 className="page-section-title">Hours</h2>
               <p className="page-text">

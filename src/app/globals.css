@@ -694,6 +694,65 @@ h1, h2, h3 {
   margin: 3px;
 }
 
+/* Service area map */
+.map-container {
+  background: var(--c-black);
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(245,240,235,0.08);
+  padding: 20px;
+  overflow: hidden;
+}
+
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.map-label {
+  font-family: var(--font-tech);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(245,240,235,0.35);
+}
+
+.map-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.map-area {
+  cursor: pointer;
+  transition: fill 0.2s, stroke 0.2s;
+}
+
+.map-area-label {
+  font-family: var(--font-tech);
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  text-anchor: middle;
+  pointer-events: none;
+  transition: fill 0.2s;
+}
+
+.map-client {
+  cursor: pointer;
+}
+
+.map-pulse {
+  animation: mapPulse 3s ease-in-out infinite;
+}
+
+@keyframes mapPulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.3; }
+}
+
 /* Icon diagram (HVAC card) */
 .icon-diagram {
   width: 80px;
