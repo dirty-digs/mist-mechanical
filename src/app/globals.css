@@ -110,6 +110,7 @@ h1, h2, h3 {
 
 .flip-front {
   z-index: 2;
+  background: inherit;
 }
 
 .flip-front:hover {
