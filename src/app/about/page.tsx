@@ -25,28 +25,29 @@ export default function AboutPage() {
               <div className="page-team-avatar">AF</div>
               <h3 className="page-team-name">Adam Farrell</h3>
               <div className="page-team-role">
-                Co-Owner / Red Seal Plumber &amp; Gas Fitter
+                Co-Owner / Red Seal HVAC &amp; Refrigeration Tech
               </div>
               <p className="page-team-bio">
-                Adam holds Interprovincial Red Seal certifications in plumbing
-                and gas fitting. With 10 years in the residential trade across
-                British Columbia, he specializes in complex plumbing retrofits,
-                gas line installations, and hydronic heating systems. Licensed
-                Class B Gas Fitter with Technical Safety BC.
+                Adam holds Interprovincial Red Seal certifications in
+                refrigeration and air conditioning mechanics. With 10 years in
+                the residential trade across British Columbia, he specializes in
+                HVAC system design, heat pump installations, and refrigeration
+                servicing. HRAI certified with expertise in energy-efficient
+                system upgrades.
               </p>
             </div>
             <div className="page-team-card">
               <div className="page-team-avatar">DF</div>
               <h3 className="page-team-name">Daniel Farrell</h3>
               <div className="page-team-role">
-                Co-Owner / Red Seal HVAC &amp; Refrigeration Tech
+                Co-Owner / Red Seal Plumber &amp; Gas Fitter
               </div>
               <p className="page-team-bio">
-                Daniel holds Interprovincial Red Seal certifications in
-                refrigeration and air conditioning mechanics. He brings 10
-                years of experience in residential HVAC system design,
-                heat pump installations, and refrigeration servicing. HRAI
-                certified with expertise in energy-efficient system upgrades.
+                Daniel holds Interprovincial Red Seal certifications in plumbing
+                and gas fitting. He brings 10 years of experience in complex
+                residential plumbing retrofits, gas line installations, and
+                hydronic heating systems. Licensed Class B Gas Fitter with
+                Technical Safety BC.
               </p>
             </div>
           </div>
