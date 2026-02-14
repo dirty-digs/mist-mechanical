@@ -719,6 +719,44 @@ h1, h2, h3 {
   color: rgba(245,240,235,0.35);
 }
 
+.map-toggle {
+  background: none;
+  border: 1px solid rgba(245,240,235,0.15);
+  border-radius: 6px;
+  color: rgba(245,240,235,0.5);
+  font-size: 14px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.map-toggle:hover {
+  border-color: rgba(245,240,235,0.4);
+  color: rgba(245,240,235,0.8);
+}
+
+.map-expanded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+  border-radius: 0;
+  border: none;
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-expanded .map-svg {
+  flex: 1;
+}
+
 .map-svg {
   width: 100%;
   height: auto;

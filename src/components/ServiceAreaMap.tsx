@@ -106,6 +106,7 @@ export default function ServiceAreaMap() {
   const [hovered, setHovered] = useState<string | null>(null);
   const [tooltip, setTooltip] = useState({ x: 0, y: 0, text: "" });
   const [hoveredClient, setHoveredClient] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -117,10 +118,20 @@ export default function ServiceAreaMap() {
   };
 
   return (
-    <div className="map-container">
+    <div className={`map-container${expanded ? " map-expanded" : ""}`}>
       <div className="map-header">
         <span className="map-label">SERVICE AREA</span>
-        <span className="map-label">{sampleClients.length} ACTIVE CLIENTS</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <span className="map-label">{sampleClients.length} ACTIVE CLIENTS</span>
+          <button
+            type="button"
+            className="map-toggle"
+            onClick={() => setExpanded(!expanded)}
+            title={expanded ? "Collapse map" : "Expand map"}
+          >
+            {expanded ? "⤡" : "⤢"}
+          </button>
+        </div>
       </div>
       <svg
         viewBox="0 0 820 510"
