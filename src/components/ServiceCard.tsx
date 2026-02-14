@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Link from "next/link";
 
 interface ServiceCardProps {
   className: string;
@@ -8,8 +9,6 @@ interface ServiceCardProps {
   subtitle: string;
   showFab?: boolean;
   ridge?: "left" | "center" | "right";
-  backTitle?: string;
-  backItems?: string[];
 }
 
 const ridgePaths: Record<string, string> = {
@@ -26,62 +25,40 @@ export default function ServiceCard({
   subtitle,
   showFab = false,
   ridge,
-  backTitle,
-  backItems,
 }: ServiceCardProps) {
   return (
-    <div className={`flip-container ${className}`}>
-      <div className="flip-inner">
-        {/* Front face */}
-        <article className="card flip-front">
-          <div className="card-header">
-            <span>SVC</span>
-            <span>{svcNumber}</span>
-          </div>
-          <div className="card-body">
-            {icon}
-            <h2 className="card-title">{title}</h2>
-            <div className="card-subtitle">
-              {ridge ? (
-                <svg
-                  viewBox="0 0 100 22"
-                  preserveAspectRatio="none"
-                  className="ridge-line"
-                >
-                  <polyline
-                    points={ridgePaths[ridge]}
-                    stroke="currentColor"
-                    strokeWidth="0.8"
-                    fill="none"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              ) : null}
-              <span className="card-subtitle-text">{subtitle}</span>
-            </div>
-          </div>
-          {showFab && <div className="action-fab">&rarr;</div>}
-        </article>
-
-        {/* Back face */}
-        <article className="card flip-back">
-          <div className="card-header">
-            <span>SVC</span>
-            <span>{svcNumber}</span>
-          </div>
-          <div className="flip-back-content">
-            <h3 className="flip-back-title">{backTitle || "Our Services"}</h3>
-            {backItems && (
-              <ul className="flip-back-list">
-                {backItems.map((item) => (
-                  <li key={item} className="flip-back-item">{item}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </article>
+    <article className={`card ${className}`}>
+      <div className="card-header">
+        <span>SVC</span>
+        <span>{svcNumber}</span>
       </div>
-    </div>
+      <div className="card-body">
+        {icon}
+        <h2 className="card-title">{title}</h2>
+        <div className="card-subtitle">
+          {ridge ? (
+            <svg
+              viewBox="0 0 100 22"
+              preserveAspectRatio="none"
+              className="ridge-line"
+            >
+              <polyline
+                points={ridgePaths[ridge]}
+                stroke="currentColor"
+                strokeWidth="0.8"
+                fill="none"
+                strokeLinejoin="round"
+                strokeLinecap="round"
+              />
+            </svg>
+          ) : null}
+          <span className="card-subtitle-text">{subtitle}</span>
+        </div>
+        <Link href="/systems" className="card-more-btn">
+          More Info &rarr;
+        </Link>
+      </div>
+      {showFab && <div className="action-fab">&rarr;</div>}
+    </article>
   );
 }
