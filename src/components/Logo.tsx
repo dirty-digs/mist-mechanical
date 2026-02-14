@@ -4,97 +4,104 @@ export default function Logo() {
   return (
     <div className="logo-wrap">
       <svg
-        viewBox="0 0 220 180"
+        viewBox="0 0 220 170"
         width="200"
-        height="163"
+        height="155"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="logo-svg"
       >
-        {/* Rotating beams - 180 degrees apart, wider spread */}
-        <g className="beam-rotate" style={{ transformOrigin: "110px 48px" }}>
+        {/* Rotating beams - 180 degrees apart */}
+        <g className="beam-rotate" style={{ transformOrigin: "110px 42px" }}>
           <polygon
-            points="110,48 88,-10 132,-10"
+            points="110,42 90,-15 130,-15"
             fill="#E8A0A0"
-            opacity="0.45"
+            opacity="0.4"
           />
           <polygon
-            points="110,48 88,106 132,106"
+            points="110,42 90,99 130,99"
             fill="#A8C8E0"
-            opacity="0.45"
+            opacity="0.4"
           />
         </g>
 
-        {/* Lighthouse - taller, with bands */}
-        {/* Base widens slightly */}
+        {/* Lighthouse */}
+        {/* Tower - tapers slightly */}
         <polygon
-          points="104,48 106,100 114,100 116,48"
+          points="105,50 107,98 113,98 115,50"
           fill="#1C2836"
         />
-        {/* Horizontal bands */}
-        <line x1="105" y1="62" x2="115" y2="62" stroke="#F5F0EB" strokeWidth="1" opacity="0.4" />
-        <line x1="105" y1="74" x2="115" y2="74" stroke="#F5F0EB" strokeWidth="1" opacity="0.4" />
-        <line x1="105.5" y1="86" x2="114.5" y2="86" stroke="#F5F0EB" strokeWidth="1" opacity="0.4" />
-        {/* Lantern room - gallery deck */}
-        <rect x="100" y="44" width="20" height="6" rx="1" fill="#1C2836" />
-        {/* Lantern glass */}
-        <rect x="103" y="36" width="14" height="9" rx="2" fill="#F5F0EB" stroke="#1C2836" strokeWidth="1.2" />
-        {/* Light dot */}
-        <circle cx="110" cy="40" r="2.5" fill="#1C2836" />
-        {/* Dome cap */}
-        <path d="M105,36 Q110,30 115,36" fill="#1C2836" />
+        {/* Bands */}
+        <line x1="106" y1="62" x2="114" y2="62" stroke="#F5F0EB" strokeWidth="0.8" opacity="0.4" />
+        <line x1="106" y1="72" x2="114" y2="72" stroke="#F5F0EB" strokeWidth="0.8" opacity="0.4" />
+        <line x1="107" y1="82" x2="113" y2="82" stroke="#F5F0EB" strokeWidth="0.8" opacity="0.4" />
+        {/* Gallery deck */}
+        <rect x="101" y="46" width="18" height="5" rx="1" fill="#1C2836" />
+        {/* Lantern room */}
+        <rect x="104" y="38" width="12" height="9" rx="2" fill="#F5F0EB" stroke="#1C2836" strokeWidth="1.2" />
+        <circle cx="110" cy="42" r="2" fill="#1C2836" />
+        {/* Dome */}
+        <path d="M106,38 Q110,32 114,38" fill="#1C2836" />
 
-        {/* Mountains - asymmetric peaks, natural terrain feel */}
-        {/* Left peak (taller) */}
+        {/* Mountain M - two peaks with valley, reads as both M and mountains */}
+        {/* Left slope up to left peak */}
         <polyline
-          points="5,148 35,82 60,100 78,88"
+          points="8,148 42,75"
           stroke="#1C2836"
-          strokeWidth="2.5"
+          strokeWidth="3.5"
           strokeLinecap="round"
           strokeLinejoin="round"
           fill="none"
         />
-        {/* Saddle / valley with foothills */}
+        {/* Left peak down to valley */}
         <polyline
-          points="78,88 95,108 110,100 125,108 142,85"
+          points="42,75 72,108 110,98"
           stroke="#1C2836"
-          strokeWidth="2.5"
+          strokeWidth="3.5"
           strokeLinecap="round"
           strokeLinejoin="round"
           fill="none"
         />
-        {/* Right peak (slightly shorter) */}
+        {/* Valley up to right peak */}
         <polyline
-          points="142,85 158,98 175,78 195,92 215,148"
+          points="110,98 148,108 170,70"
           stroke="#1C2836"
-          strokeWidth="2.5"
+          strokeWidth="3.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        {/* Right peak down to slope */}
+        <polyline
+          points="170,70 212,148"
+          stroke="#1C2836"
+          strokeWidth="3.5"
           strokeLinecap="round"
           strokeLinejoin="round"
           fill="none"
         />
 
-        {/* Subtle ridge lines for depth */}
+        {/* Subtle snow line / ridge detail on left peak */}
         <polyline
-          points="25,148 55,118 75,128 95,120"
+          points="32,90 42,75 55,88"
           stroke="#1C2836"
-          strokeWidth="0.8"
+          strokeWidth="0.7"
           strokeLinecap="round"
-          strokeLinejoin="round"
           fill="none"
           opacity="0.2"
         />
+        {/* Ridge detail on right peak */}
         <polyline
-          points="125,118 145,128 170,112 200,148"
+          points="160,86 170,70 182,85"
           stroke="#1C2836"
-          strokeWidth="0.8"
+          strokeWidth="0.7"
           strokeLinecap="round"
-          strokeLinejoin="round"
           fill="none"
           opacity="0.2"
         />
 
-        {/* Ground line */}
-        <line x1="15" y1="148" x2="205" y2="148" stroke="#1C2836" strokeWidth="0.8" opacity="0.15" />
+        {/* Foothills / ground line for depth */}
+        <line x1="25" y1="148" x2="195" y2="148" stroke="#1C2836" strokeWidth="0.6" opacity="0.12" />
       </svg>
 
       <div className="logo-text">
