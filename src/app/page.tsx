@@ -117,6 +117,15 @@ export default function Home() {
         title={<>Plumbing</>}
         subtitle="Residential Specialists"
         ridge="center"
+        backTitle="Plumbing Services"
+        backItems={[
+          "Water Heater Install & Repair",
+          "Drain Clearing & Camera Inspection",
+          "Fixture & Faucet Install",
+          "Whole-Home Re-piping",
+          "Leak Detection & Repair",
+          "Bathroom & Kitchen Rough-ins",
+        ]}
       />
 
       <DataBlock />
@@ -128,6 +137,15 @@ export default function Home() {
         title={<>HVAC</>}
         subtitle="Heating, Ventilation & AC"
         ridge="left"
+        backTitle="HVAC Services"
+        backItems={[
+          "Furnace Install & Repair",
+          "Heat Pump Systems",
+          "Mini Split Installation",
+          "Duct Cleaning & Sealing",
+          "Annual Maintenance Plans",
+          "Air Quality & Filtration",
+        ]}
       />
 
       <ServiceCard
@@ -137,6 +155,15 @@ export default function Home() {
         title={<>Gas<br />Fitting</>}
         subtitle="Installation & Service"
         ridge="right"
+        backTitle="Gas Fitting Services"
+        backItems={[
+          "Gas Line Installation",
+          "Gas Fireplace Hookup",
+          "BBQ & Outdoor Line Install",
+          "Appliance Hookup",
+          "Leak Detection & Testing",
+          "Safety Inspections",
+        ]}
       />
     </DashboardShell>
   );
