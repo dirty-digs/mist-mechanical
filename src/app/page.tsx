@@ -2,6 +2,7 @@ import DashboardShell from "@/components/DashboardShell";
 import ServiceCard from "@/components/ServiceCard";
 import DataBlock from "@/components/DataBlock";
 import QuoteBuilder from "@/components/QuoteBuilder";
+import AvailabilityCalendar from "@/components/AvailabilityCalendar";
 
 function HvacIcon() {
   return <div className="icon-diagram" />;
@@ -60,6 +61,7 @@ export default function Home() {
   return (
     <DashboardShell>
       <QuoteBuilder />
+      <AvailabilityCalendar />
 
       <ServiceCard
         className="service-plumbing"
